@@ -323,12 +323,11 @@ class Metronet_Tag_Manager {
 			}
 		}
 		//Now output dataLayer variables
-		echo '<script>' . "\n";
 		foreach( $data_layer_array as &$value ) {
 			$value = preg_replace_callback( "|%([^%]*)%|", array( $this, 'variable_replace' ), $value );
 		}
-		printf( 'dataLayer = [%s];', json_encode( $data_layer_array ) );
-		echo "\n";
+		echo '<script>' . "\n";
+		printf( 'dataLayer = [%s];', json_encode( $data_layer_array ) ) . "\n";
 		echo '</script>' . "\n";
 		
 		//Output GTM Code
