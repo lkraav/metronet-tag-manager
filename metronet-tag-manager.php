@@ -324,7 +324,7 @@ class Metronet_Tag_Manager {
 		}
 		//Now output dataLayer variables
 		foreach( $data_layer_array as &$value ) {
-			$value = preg_replace_callback( "|%([^%]*)%|", array( $this, 'variable_replace' ), $value );
+			$value = $this->variable_replace( [ $value, str_replace( "%", "", $value ) ] );
 		}
 		echo '<script>' . "\n";
 		printf( 'dataLayer = [%s];', json_encode( $data_layer_array ) ) . "\n";
